@@ -26,15 +26,13 @@
     }
     </script>
     
-    <!-- CSS REFATORADO -->
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/components.css">
+    <!-- CSS ÚNICO -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <!-- ============================================
-     NAVBAR REFATORADA COM FOTO
+     NAVBAR
      ============================================ -->
 <header class="navbar">
   <div class="navbar-container">
@@ -71,29 +69,24 @@
         <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20tudo%20bem%3F" class="btn btn-cta btn-lg">Conversar via WhatsApp</a>
         <a href="https://entr.ai/felipecomunello" class="btn btn-secondary btn-lg">Agendar Mentoria</a>
       </div>
-      <div style="margin-left: auto; margin-right: 0; width: 300px; flex-shrink: 0;">
-  <img src="/assets/images/felipe-evento.jpg" 
-       alt="Felipe Comunello em evento" 
-       style="width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 4px solid var(--color-cta); box-shadow: var(--shadow-lg);">
-</div>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     PROVA SOCIAL - LOGOS DE EMPRESAS
+     PROVA SOCIAL - LOGOS
      ============================================ -->
 <section class="logos-section">
   <div class="logos-container">
     <h2 class="logos-title">Trabalhei com</h2>
     <div class="logos-slider" id="logosSlider">
-      <!-- Logo items serão adicionados via JavaScript -->
+      <!-- Logos carregadas via JavaScript -->
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     MANIFESTO SECTION
+     MANIFESTO
      ============================================ -->
 <section class="alt" style="padding: var(--space-giant) var(--space-lg); text-align: center;">
   <div class="container-tight">
@@ -105,7 +98,7 @@
 </section>
 
 <!-- ============================================
-     SERVIÇOS / CONTRATAÇÃO
+     SERVIÇOS
      ============================================ -->
 <section id="servicos">
   <div class="container-wide">
@@ -211,7 +204,7 @@
 </section>
 
 <!-- ============================================
-     CASES & RESULTADOS
+     CASES
      ============================================ -->
 <section id="cases">
   <div class="container-wide">
@@ -221,7 +214,6 @@
     </p>
     
     <div class="grid grid-3">
-      <!-- CASE 1: ALDEIA -->
       <div class="case-card">
         <div class="case-card-image">📊</div>
         <div class="case-card-tag">Turnaround & Escala</div>
@@ -233,7 +225,6 @@
         <a href="/cases/aldeia/" style="color: var(--color-cta); font-weight: 600; margin-top: auto;">Ver case completo →</a>
       </div>
 
-      <!-- CASE 2: MAIEUTICS -->
       <div class="case-card">
         <div class="case-card-image">🧪</div>
         <div class="case-card-tag">GTM & Experimentação</div>
@@ -245,7 +236,6 @@
         <a href="/cases/maieutics/" style="color: var(--color-cta); font-weight: 600; margin-top: auto;">Ver case completo →</a>
       </div>
 
-      <!-- CASE 3: MAIEUTICS PIVÔ -->
       <div class="case-card">
         <div class="case-card-image">⚡</div>
         <div class="case-card-tag">Pivot Tático com IA</div>
@@ -265,20 +255,20 @@
 </section>
 
 <!-- ============================================
-     DEPOIMENTOS COM AVATARES
+     DEPOIMENTOS
      ============================================ -->
 <section class="testimonials-section">
   <div class="container-wide">
     <h2 style="text-align: center; margin-bottom: var(--space-xl);">O que falam de mim</h2>
     
     <div class="testimonials-grid" id="testimonialsContainer">
-      <!-- Depoimentos serão carregados via JavaScript -->
+      <!-- Depoimentos carregados via JavaScript -->
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     ENSAIOS & BLOG PREVIEW
+     BLOG PREVIEW
      ============================================ -->
 <section id="blog">
   <div class="container-wide">
@@ -364,7 +354,7 @@
   </div>
 </footer>
 
-<!-- SCRIPTS -->
+<!-- SCRIPT -->
 <script src="/js/main.js"></script>
 
 </body>
