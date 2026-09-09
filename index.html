@@ -5,50 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felipe Comunello - Arquitetura de Receita & Revenue Operations</title>
     
-    <!-- META DESCRIÇÃO & KEYWORDS -->
     <meta name="description" content="Especialista em GTM, Revenue Operations e Growth Marketing. Arquiteto de processos que conecta Produto, Vendas e Dados para escalar operações B2B.">
     <meta name="keywords" content="GTM, Revenue Operations, Growth Marketing, RevOps, Go-To-Market, Felipe Comunello">
     
-    <!-- OPEN GRAPH (Social Media Preview) -->
     <meta property="og:title" content="Felipe Comunello - Arquitetura de Receita & Revenue Operations">
-    <meta property="og:description" content="Especialista em GTM, Revenue Operations e Growth Marketing. Arquiteto de processos que conecta Produto, Vendas e Dados.">
-    <meta property="og:type" content="Linkedin">
-    <meta property="og:url" content="https://www.linkedin.com/in/felipecomunello/">
+    <meta property="og:description" content="Especialista em GTM, Revenue Operations e Growth Marketing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://felipecomunello.com">
     
-    <!-- CANONICAL -->
-    <link rel="canonical" href="https://www.linkedin.com/in/felipecomunello/">
+    <link rel="canonical" href="https://felipecomunello.com/">
     
-    <!-- SCHEMA.ORG (Structured Data para SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Felipe Comunello",
       "description": "Especialista em Revenue Operations e Go-To-Market (GTM)",
-      "url": "https://www.linkedin.com/in/felipecomunello/",
-      "sameAs": [
-        "https://linkedin.com/in/felipecomunello",
-        "https://instagram.com/felipecogumello"
-      ],
+      "url": "https://felipecomunello.com",
       "jobTitle": "Especialista em Revenue Operations & GTM"
     }
     </script>
     
-    <!-- CSS LINKS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- FAVICON -->
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <!-- CSS REFATORADO -->
+    <link rel="stylesheet" href="/css/base-refatorado.css">
+    <link rel="stylesheet" href="/css/layout-refatorado.css">
+    <link rel="stylesheet" href="/css/components-refatorado.css">
 </head>
 <body>
 
 <!-- ============================================
-     NAVBAR / HEADER
+     NAVBAR REFATORADA COM FOTO
      ============================================ -->
 <header class="navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <a href="/">FC</a>
+      <img src="/assets/logos/site/Logo Felipe Site - principal.png" alt="Felipe Comunello" class="navbar-brand-logo">
+      <span class="navbar-brand-text">FC</span>
     </div>
     
     <nav class="navbar-menu">
@@ -59,40 +51,56 @@
     </nav>
     
     <div class="navbar-ctas">
+      <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20tudo%20bem%3F" class="navbar-cta-whatsapp">
+        💬 WhatsApp
+      </a>
       <a href="https://entr.ai/felipecomunello" class="btn btn-secondary">Mentoria</a>
-      <a href="mailto:felipecogumello@gmail.com" class="btn btn-primary">Conversar</a>
     </div>
   </div>
 </header>
 
 <!-- ============================================
-     HERO SECTION (Elegância Specia1ne + JoinJuggle)
+     HERO SECTION
      ============================================ -->
 <section class="hero">
   <div class="container-wide">
     <div class="hero-content">
       <h1>Arquitetura de Receita, Inteligência de Dados e Produção Criativa.</h1>
       <p class="subheader">Desenvolvo sistemas de vendas previsíveis (RevOps/GTM) e exploro a interseção entre tecnologia, processo e arte.</p>
+      <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl);">
+        <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20tudo%20bem%3F" class="btn btn-cta btn-lg">Conversar via WhatsApp</a>
+        <a href="https://entr.ai/felipecomunello" class="btn btn-secondary btn-lg">Agendar Mentoria</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     MANIFESTO SECTION (Compartilho, logo cresço)
+     PROVA SOCIAL - LOGOS DE EMPRESAS
      ============================================ -->
-<section class="manifesto-section alt">
-  <div class="container-tight">
-    <div class="manifesto-content">
-      <h2 class="manifesto-title">Compartilho, logo cresço.</h2>
-      <p class="manifesto-text">
-        O egoísmo intelectual revela insegurança; o conhecimento aberto gera escala. Não acredito em caixas pretas nem em segredos operacionais. Tudo o que construo em engenharia de receita, automações e cultura criativa é documentado e compartilhado. Quando o processo é claro, o crescimento deixa de ser sorte e passa a ser sistema.
-      </p>
+<section class="logos-section">
+  <div class="logos-container">
+    <h2 class="logos-title">Trabalhei com</h2>
+    <div class="logos-slider" id="logosSlider">
+      <!-- Logo items serão adicionados via JavaScript -->
     </div>
   </div>
 </section>
 
 <!-- ============================================
-     SERVIÇOS / CONTRATAÇÃO (WeAreDirect style)
+     MANIFESTO SECTION
+     ============================================ -->
+<section class="alt" style="padding: var(--space-giant) var(--space-lg); text-align: center;">
+  <div class="container-tight">
+    <h2>Compartilho, logo cresço.</h2>
+    <p style="font-size: var(--font-size-lg); line-height: var(--line-height-relaxed); margin-top: var(--space-xl);">
+      O egoísmo intelectual revela insegurança; o conhecimento aberto gera escala. Não acredito em caixas pretas nem em segredos operacionais. Tudo o que construo em engenharia de receita, automações e cultura criativa é documentado e compartilhado. Quando o processo é claro, o crescimento deixa de ser sorte e passa a ser sistema.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVIÇOS / CONTRATAÇÃO
      ============================================ -->
 <section id="servicos">
   <div class="container-wide">
@@ -118,7 +126,7 @@
           </ul>
         </div>
         <div class="service-card-cta">
-          <a href="mailto:felipecogumello@gmail.com" class="btn btn-primary btn-full">Iniciar Sprint</a>
+          <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Sprint%20de%20RevOps" class="btn btn-cta btn-full">Iniciar Sprint</a>
         </div>
       </div>
 
@@ -138,7 +146,7 @@
           </ul>
         </div>
         <div class="service-card-cta">
-          <a href="mailto:felipecogumello@gmail.com" class="btn btn-primary btn-full">Discutir Projeto</a>
+          <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20gostaria%20de%20saber%20mais%20sobre%20Arquitetura%20de%20GTM" class="btn btn-cta btn-full">Discutir Projeto</a>
         </div>
       </div>
 
@@ -158,7 +166,7 @@
           </ul>
         </div>
         <div class="service-card-cta">
-          <a href="https://entr.ai/felipecomunello" class="btn btn-primary btn-full">Agendar Mentoria</a>
+          <a href="https://entr.ai/felipecomunello" class="btn btn-cta btn-full">Agendar Mentoria</a>
         </div>
       </div>
     </div>
@@ -166,7 +174,7 @@
 </section>
 
 <!-- ============================================
-     ESPAÇO CRIATIVO (MinimalJP + Vessa)
+     ESPAÇO CRIATIVO
      ============================================ -->
 <section id="criativo" class="alt">
   <div class="container-wide">
@@ -176,14 +184,14 @@
     </p>
     
     <div class="grid grid-2">
-      <div class="creative-block" style="background: linear-gradient(135deg, var(--color-creative-orange) 0%, var(--color-creative-red) 100%);">
+      <div class="creative-block" style="background: linear-gradient(135deg, #FF6B35 0%, #D85252 100%);">
         <div class="creative-block-overlay">
           <div class="creative-block-title">DJ / Produtor</div>
           <div class="creative-block-subtitle">Sets afro, house, experimentação</div>
         </div>
       </div>
       
-      <div class="creative-block" style="background: linear-gradient(135deg, var(--color-creative-blue) 0%, var(--color-creative-green) 100%);">
+      <div class="creative-block" style="background: linear-gradient(135deg, #1E3A5F 0%, #2D5A3D 100%);">
         <div class="creative-block-overlay">
           <div class="creative-block-title">Curadoria</div>
           <div class="creative-block-subtitle">Arte, design, referências</div>
@@ -192,13 +200,13 @@
     </div>
     
     <p style="color: var(--color-text-light); margin-top: var(--space-xl); text-align: center; font-size: var(--font-size-base);">
-      Explorando a interseção entre pensamento sistemático e expressão artística. <a href="/criativo/" style="color: var(--color-text); border-bottom: 2px solid var(--color-accent);">Ver mais →</a>
+      Explorando a interseção entre pensamento sistemático e expressão artística. <a href="/criativo/" style="color: var(--color-text); border-bottom: 2px solid var(--color-cta);">Ver mais →</a>
     </p>
   </div>
 </section>
 
 <!-- ============================================
-     CASES & RESULTADOS (Grid + Métricas)
+     CASES & RESULTADOS
      ============================================ -->
 <section id="cases">
   <div class="container-wide">
@@ -209,43 +217,40 @@
     
     <div class="grid grid-3">
       <!-- CASE 1: ALDEIA -->
-      <a href="/cases/aldeia/" class="card-case">
-        <div class="case-card-image">
-          <span style="font-size: 48px;">🏢</span>
-        </div>
+      <div class="case-card">
+        <div class="case-card-image">📊</div>
         <div class="case-card-tag">Turnaround & Escala</div>
         <h3 class="case-card-title">Aldeia.cc</h3>
         <p class="case-card-description">
-          Reestruturação comercial pós-pandemia. Resultado: 100% de crescimento no faturamento mensal (R$ 100k → R$ 200k).
+          Reestruturação comercial pós-pandemia. Resultado: 100% de crescimento no faturamento mensal.
         </p>
         <div class="case-card-metric">📈 +100% em receita mensal</div>
-      </a>
+        <a href="/cases/aldeia/" style="color: var(--color-cta); font-weight: 600; margin-top: auto;">Ver case completo →</a>
+      </div>
 
       <!-- CASE 2: MAIEUTICS -->
-      <a href="/cases/maieutics/" class="card-case">
-        <div class="case-card-image">
-          <span style="font-size: 48px;">🧪</span>
-        </div>
+      <div class="case-card">
+        <div class="case-card-image">🧪</div>
         <div class="case-card-tag">GTM & Experimentação</div>
         <h3 class="case-card-title">Maieutics.ai</h3>
         <p class="case-card-description">
-          Estruturação de infraestrutura de aquisição, validação de mercado e testes comerciais em múltiplos ICPs.
+          Estruturação de infraestrutura de aquisição, validação de mercado e testes comerciais.
         </p>
         <div class="case-card-metric">📊 Clareza em PMF</div>
-      </a>
+        <a href="/cases/maieutics/" style="color: var(--color-cta); font-weight: 600; margin-top: auto;">Ver case completo →</a>
+      </div>
 
       <!-- CASE 3: MAIEUTICS PIVÔ -->
-      <a href="/cases/maieutics-pivot/" class="card-case">
-        <div class="case-card-image">
-          <span style="font-size: 48px;">⚡</span>
-        </div>
+      <div class="case-card">
+        <div class="case-card-image">⚡</div>
         <div class="case-card-tag">Pivot Tático com IA</div>
         <h3 class="case-card-title">Maieutics — Pivô Rápido</h3>
         <p class="case-card-description">
-          Diagnóstico de hipótese falha, pivot com IA generativa e Vibe Coding. Resultado: 180% mais leads convertidos.
+          Diagnóstico de hipótese falha, pivot com IA generativa. Resultado: 180% mais conversão.
         </p>
         <div class="case-card-metric">🚀 180% conversão ↑</div>
-      </a>
+        <a href="/cases/maieutics-pivot/" style="color: var(--color-cta); font-weight: 600; margin-top: auto;">Ver case completo →</a>
+      </div>
     </div>
 
     <div style="text-align: center; margin-top: var(--space-xxl);">
@@ -255,33 +260,14 @@
 </section>
 
 <!-- ============================================
-     PROVA SOCIAL (Testimonials)
+     DEPOIMENTOS COM AVATARES
      ============================================ -->
-<section class="alt">
-  <div class="container-tight">
+<section class="testimonials-section">
+  <div class="container-wide">
     <h2 style="text-align: center; margin-bottom: var(--space-xl);">O que falam de mim</h2>
     
-    <div class="flex-column">
-      <div class="testimonial">
-        <p class="testimonial-text">
-          "O Felipe é uma pessoa e profissional maravilhoso! Sou muito grata por ter trabalhado ao seu lado e por ter aprendido tanta coisa com ele. É alguém com a energia lá em cima, que contagia! Sempre disposto a ajudar e a buscar soluções para problemas."
-        </p>
-        <p class="testimonial-author">— Colega, Aldeia.cc</p>
-      </div>
-
-      <div class="testimonial">
-        <p class="testimonial-text">
-          "Trabalhei com o Felipe e descrever o quanto eu o admiro ficaria muito extenso. Profissional de marketing e vendas sem poupar palavras. Recomendaria para qualquer projeto de alto potencial."
-        </p>
-        <p class="testimonial-author">— Colega, Frantic Sales</p>
-      </div>
-
-      <div class="testimonial">
-        <p class="testimonial-text">
-          "A facilidade de engajar em novos grupos, vestir a camisa do time e buscar desenvolvimento em áreas novas. Felipe é alguém que compra a ideia e é defensor do projeto."
-        </p>
-        <p class="testimonial-author">— Líder, Traktor Tração Digital</p>
-      </div>
+    <div class="testimonials-grid" id="testimonialsContainer">
+      <!-- Depoimentos serão carregados via JavaScript -->
     </div>
   </div>
 </section>
@@ -297,19 +283,16 @@
     </p>
     
     <div class="grid grid-3">
-      <!-- POST 1 -->
       <a href="/blog/growth/gtm-b2b-fails.html" class="link-block">
         <div class="link-block-title">Por que GTM de B2B falha</div>
         <p class="link-block-description">Arquitetura, ICP e alinhamento comercial — os erros mais comuns antes do primeiro lead.</p>
       </a>
 
-      <!-- POST 2 -->
       <a href="/blog/automacao/pipeline-revops.html" class="link-block">
         <div class="link-block-title">Pipeline de RevOps Sem Engenharia Pesada</div>
         <p class="link-block-description">n8n, APIs REST e integração de CRM — automação ágil e de baixo custo operacional.</p>
       </a>
 
-      <!-- POST 3 -->
       <a href="/blog/ia/agentes-ia.html" class="link-block">
         <div class="link-block-title">Agentes de IA no Funil Comercial</div>
         <p class="link-block-description">Do hype à automação real. Engenharia de prompt aplicada em rotinas de Marketing e Vendas.</p>
@@ -323,7 +306,7 @@
 </section>
 
 <!-- ============================================
-     CTA FINAL (Let's build the system)
+     CTA FINAL
      ============================================ -->
 <section class="alt">
   <div class="container-tight" style="text-align: center;">
@@ -333,13 +316,13 @@
     </p>
     
     <div style="display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
-      <a href="https://entr.ai/felipecomunello" class="btn btn-primary btn-lg">Agendar Mentoria</a>
-      <a href="mailto:felipecogumello@gmail.com" class="btn btn-secondary btn-lg">Enviar Email</a>
+      <a href="https://wa.me/5541996187650?text=Olá%20Felipe%2C%20vamos%20conversar%3F" class="btn btn-cta btn-lg">Iniciar Conversa no WhatsApp</a>
+      <a href="https://entr.ai/felipecomunello" class="btn btn-secondary btn-lg">Agendar Mentoria</a>
     </div>
 
     <div style="margin-top: var(--space-xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border);">
       <p style="font-size: var(--font-size-sm); color: var(--color-text-light);">
-        Ou continue acompanhando insights no blog e no <a href="https://substack.com/@felipecomunello" style="border-bottom: 2px solid var(--color-accent);">Substack →</a>
+        Ou continue acompanhando insights no blog e no <a href="https://substack.com/@felipecomunello" style="border-bottom: 2px solid var(--color-cta); color: var(--color-text);">Substack →</a>
       </p>
     </div>
   </div>
@@ -353,7 +336,7 @@
     <div>
       <h4>Felipe Comunello</h4>
       <a href="mailto:felipecogumello@gmail.com">felipecogumello@gmail.com</a>
-      <a href="https://wa.me/5541996187650">+55 (41) 99618-7650</a>
+      <a href="https://wa.me/5541996187650">WhatsApp: +55 (41) 99618-7650</a>
     </div>
     
     <div>
@@ -367,7 +350,7 @@
       <h4>Navegação</h4>
       <a href="/blog/">Blog</a>
       <a href="/cases/">Cases</a>
-      <a href="/criativo/">Criativo</a>
+      <a href="#criativo">Criativo</a>
     </div>
   </div>
   
@@ -377,7 +360,7 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script src="assets/js/main.js"></script>
+<script src="/js/main-refatorado.js"></script>
 
 </body>
 </html>

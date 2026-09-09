@@ -1,115 +1,149 @@
 /* ============================================
-   COMPONENTS.CSS
-   Botões, Cards, Testimonials, e Interações
+   COMPONENTS.CSS REFATORADO
+   Botões temáticos, Cards, Depoimentos, Prova Social
    ============================================ */
 
 /* ============================================
-   BOTÕES (Com Contrastes)
+   BOTÕES TEMÁTICOS (5 cores)
    ============================================ */
-.btn {
+
+/* GERAL - Bege orgânico */
+.btn-theme-general {
+  background-color: var(--color-theme-general);
+  color: var(--color-text);
+  border: 2px solid var(--color-theme-general);
+}
+
+.btn-theme-general:hover {
+  background-color: transparent;
+  color: var(--color-theme-general);
+  border-color: var(--color-theme-general);
+}
+
+/* TECH/REVOPS - Azul claro preciso */
+.btn-theme-tech {
+  background-color: var(--color-theme-tech);
+  color: var(--color-text);
+  border: 2px solid var(--color-theme-tech);
+}
+
+.btn-theme-tech:hover {
+  background-color: transparent;
+  color: var(--color-theme-tech);
+  border-color: var(--color-theme-tech);
+}
+
+/* MÚSICA - Escuro noturno */
+.btn-theme-music {
+  background-color: var(--color-theme-music);
+  color: white;
+  border: 2px solid var(--color-theme-music);
+}
+
+.btn-theme-music:hover {
+  background-color: transparent;
+  color: var(--color-theme-music);
+  border-color: var(--color-theme-music);
+}
+
+/* CONTEÚDO - Pêssego criativo */
+.btn-theme-content {
+  background-color: var(--color-theme-content);
+  color: var(--color-text);
+  border: 2px solid var(--color-theme-content);
+}
+
+.btn-theme-content:hover {
+  background-color: transparent;
+  color: var(--color-theme-content);
+  border-color: var(--color-theme-content);
+}
+
+/* ESTRATÉGIA - Cinza elegante */
+.btn-theme-strategy {
+  background-color: var(--color-theme-strategy);
+  color: var(--color-text);
+  border: 2px solid var(--color-theme-strategy);
+}
+
+.btn-theme-strategy:hover {
+  background-color: transparent;
+  color: var(--color-theme-strategy);
+  border-color: var(--color-theme-strategy);
+}
+
+/* ============================================
+   BADGE TEMÁTICO
+   ============================================ */
+.badge {
   display: inline-block;
-  padding: var(--space-md) var(--space-lg);
-  font-weight: var(--font-weight-semibold);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  text-align: center;
-  text-decoration: none;
-  border: 2px solid transparent;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* BOTÃO PRIMARY (Charcoal com fundo, contrastado) */
-.btn-primary {
-  background-color: var(--color-text);
-  color: var(--color-bg);
-  border-color: var(--color-text);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+.badge-general {
+  background-color: var(--color-theme-general);
   color: var(--color-text);
-  transform: translateY(-2px);
 }
 
-/* BOTÃO SECONDARY (Outline com bege) */
-.btn-secondary {
-  background-color: transparent;
+.badge-tech {
+  background-color: var(--color-theme-tech);
   color: var(--color-text);
-  border-color: var(--color-text);
 }
 
-.btn-secondary:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+.badge-music {
+  background-color: var(--color-theme-music);
+  color: white;
+}
+
+.badge-content {
+  background-color: var(--color-theme-content);
   color: var(--color-text);
-  transform: translateY(-2px);
 }
 
-/* BOTÃO TERTIARY (Apenas texto, bege-técnico) */
-.btn-tertiary {
-  background-color: transparent;
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.btn-tertiary:hover {
+.badge-strategy {
+  background-color: var(--color-theme-strategy);
   color: var(--color-text);
-  border-color: var(--color-text);
-}
-
-/* BOTÃO CRIATIVO (Pops de cor) */
-.btn-creative {
-  background-color: var(--color-creative-orange);
-  color: var(--color-bg);
-  border-color: var(--color-creative-orange);
-}
-
-.btn-creative:hover {
-  background-color: var(--color-creative-blue);
-  border-color: var(--color-creative-blue);
-  transform: translateY(-2px);
-}
-
-/* TAMANHOS */
-.btn-sm {
-  padding: var(--space-sm) var(--space-md);
-  font-size: var(--font-size-sm);
-}
-
-.btn-lg {
-  padding: var(--space-lg) var(--space-xl);
-  font-size: var(--font-size-lg);
-}
-
-.btn-full {
-  width: 100%;
-  display: block;
 }
 
 /* ============================================
-   CARDS DE SERVIÇO (Style: WeAreDirect)
+   SECTION BACKGROUND TEMÁTICO
    ============================================ */
-.service-card {
-  padding: var(--space-xl);
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  background-color: var(--color-bg);
-  transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
+.section-general {
+  background-color: var(--color-theme-general);
+  background-color: rgba(222, 226, 199, 0.1);
 }
 
-.service-card:hover {
-  border-color: var(--color-text);
-  background-color: var(--color-bg-alt);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+.section-tech {
+  background-color: var(--color-theme-tech);
+  background-color: rgba(220, 234, 245, 0.1);
 }
 
+.section-music {
+  background-color: var(--color-theme-music);
+  background-color: rgba(49, 49, 49, 0.05);
+}
+
+.section-content {
+  background-color: var(--color-theme-content);
+  background-color: rgba(251, 232, 211, 0.1);
+}
+
+.section-strategy {
+  background-color: var(--color-theme-strategy);
+  background-color: rgba(226, 223, 216, 0.1);
+}
+
+/* ============================================
+   SERVICE CARD (JoinJuggle style)
+   ============================================ */
 .service-card-title {
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   margin-bottom: var(--space-md);
   color: var(--color-text);
 }
@@ -124,8 +158,8 @@
 
 .service-card-duration {
   font-size: var(--font-size-sm);
-  color: var(--color-accent);
-  font-weight: var(--font-weight-semibold);
+  color: var(--color-cta);
+  font-weight: 600;
   margin-bottom: var(--space-md);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -153,7 +187,8 @@
   content: "→";
   position: absolute;
   left: 0;
-  color: var(--color-accent);
+  color: var(--color-cta);
+  font-weight: 700;
 }
 
 .service-card-cta {
@@ -161,7 +196,7 @@
 }
 
 /* ============================================
-   CASE CARDS (Grid + Hover)
+   CASE CARD
    ============================================ */
 .case-card {
   padding: var(--space-lg);
@@ -170,25 +205,26 @@
   background-color: var(--color-bg);
   transition: all var(--transition-normal);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .case-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-cta);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .case-card-image {
   width: 100%;
-  height: 240px;
+  height: 200px;
   background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-bg-alt) 100%);
   border-radius: 4px;
   margin-bottom: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
+  font-size: var(--font-size-4xl);
 }
 
 .case-card-tag {
@@ -200,12 +236,12 @@
   border-radius: 2px;
   margin-bottom: var(--space-md);
   text-transform: uppercase;
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
 }
 
 .case-card-title {
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   margin-bottom: var(--space-md);
 }
 
@@ -214,80 +250,247 @@
   color: var(--color-text-light);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-md);
+  flex-grow: 1;
 }
 
 .case-card-metric {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-cta);
   margin-bottom: var(--space-sm);
 }
 
 /* ============================================
-   TESTIMONIALS
+   TESTIMONIALS REFATORADOS
    ============================================ */
-.testimonial {
-  padding: var(--space-lg);
-  border-left: 3px solid var(--color-accent);
+.testimonials-section {
   background-color: var(--color-bg-alt);
-  border-radius: 4px;
+  padding: var(--space-giant) var(--space-lg);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
+}
+
+.testimonial-card {
+  padding: var(--space-lg);
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card:hover {
+  border-color: var(--color-cta);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
   margin-bottom: var(--space-lg);
+}
+
+.testimonial-avatar-large {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-cta);
+}
+
+.testimonial-avatar-placeholder {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-theme-tech));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-4xl);
+  color: var(--color-text);
+  border: 3px solid var(--color-cta);
+}
+
+.testimonial-info {
+  flex: 1;
+}
+
+.testimonial-author-name {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.testimonial-author-role {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.testimonial-author-company {
+  font-size: var(--font-size-sm);
+  color: var(--color-cta);
+  font-weight: 600;
 }
 
 .testimonial-text {
   font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-light);
-  margin-bottom: var(--space-md);
   font-style: italic;
+  margin-top: var(--space-lg);
+  flex-grow: 1;
+  border-left: 3px solid var(--color-cta);
+  padding-left: var(--space-lg);
 }
 
-.testimonial-author {
-  font-weight: var(--font-weight-semibold);
+/* ============================================
+   PROVA SOCIAL - LOGO GRID
+   ============================================ */
+.social-proof-section {
+  padding: var(--space-giant) var(--space-lg);
+  text-align: center;
+}
+
+.social-proof-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
   color: var(--color-text);
 }
 
-.testimonial-role {
+.social-proof-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xxl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background-color: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  min-height: 150px;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.logo-card:hover {
+  border-color: var(--color-cta);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.logo-card img {
+  max-width: 90%;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in {
+  animation: slideInFromLeft 0.6s ease-in forwards;
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(240, 66, 66, 0.3);
+}
+
+/* ============================================
+   LINK BLOCKS
+   ============================================ */
+.link-block {
+  display: block;
+  padding: var(--space-lg);
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all var(--transition-normal);
+  margin-bottom: var(--space-lg);
+}
+
+.link-block:hover {
+  border-color: var(--color-cta);
+  background-color: var(--color-bg-alt);
+  transform: translateX(4px);
+}
+
+.link-block-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.link-block-description {
   font-size: var(--font-size-sm);
   color: var(--color-text-light);
 }
 
 /* ============================================
-   BADGES & TAGS
-   ============================================ */
-.badge {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-md);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.badge-primary {
-  background-color: var(--color-text);
-  color: var(--color-bg);
-}
-
-.badge-secondary {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.badge-creative {
-  background-color: var(--color-creative-orange);
-  color: var(--color-bg);
-}
-
-/* ============================================
-   CREATIVE BLOCKS (Espaço Criativo)
+   CREATIVE BLOCKS
    ============================================ */
 .creative-block {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-bg-alt) 100%);
   aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
@@ -307,7 +510,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(45, 45, 45, 0.3);
+  background: rgba(45, 45, 45, 0.4);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -321,144 +524,54 @@
 }
 
 .creative-block-title {
-  color: var(--color-bg);
+  color: white;
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
 }
 
 .creative-block-subtitle {
-  color: var(--color-bg);
+  color: white;
   font-size: var(--font-size-base);
   margin-top: var(--space-sm);
-}
-
-/* ============================================
-   FEATURES & HIGHLIGHTS
-   ============================================ */
-.highlight {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  padding: 4px 8px;
-  border-radius: 2px;
-}
-
-.highlight-bold {
-  font-weight: var(--font-weight-bold);
-}
-
-/* ============================================
-   LINK BLOCKS (CTA inteligentes)
-   ============================================ */
-.link-block {
-  display: block;
-  padding: var(--space-lg);
-  border: 2px solid var(--color-border);
-  border-radius: 4px;
-  text-decoration: none;
-  color: var(--color-text);
-  transition: all var(--transition-normal);
-  margin-bottom: var(--space-lg);
-}
-
-.link-block:hover {
-  border-color: var(--color-text);
-  background-color: var(--color-bg-alt);
-  transform: translateX(4px);
-}
-
-.link-block-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-sm);
-}
-
-.link-block-description {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-}
-
-/* ============================================
-   DIVIDERS & DECORATIVE
-   ============================================ */
-.divider-thin {
-  height: 1px;
-  background-color: var(--color-border);
-  margin: var(--space-xl) 0;
-}
-
-.divider-thick {
-  height: 3px;
-  background-color: var(--color-accent);
-  margin: var(--space-xl) 0;
-  border-radius: 2px;
-}
-
-/* ============================================
-   SCROLL REVEAL / FADE IN
-   ============================================ */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 0.6s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ============================================
-   HOVER EFFECTS (Smooth, Elegant)
-   ============================================ */
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(212, 197, 185, 0.3);
 }
 
 /* ============================================
    RESPONSIVIDADE
    ============================================ */
 @media (max-width: 768px) {
-  .service-card {
-    padding: var(--space-lg);
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 
-  .case-card-image {
-    height: 180px;
+  .logos-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .creative-block {
-    aspect-ratio: auto;
-    min-height: 200px;
+  .testimonial-header {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .btn-full {
-    width: 100%;
+  .testimonial-text {
+    border-left: none;
+    border-top: 3px solid var(--color-cta);
+    padding-left: 0;
+    padding-top: var(--space-lg);
   }
 }
 
 @media (max-width: 480px) {
-  .btn {
-    display: block;
-    width: 100%;
-    text-align: center;
+  .testimonial-avatar-large,
+  .testimonial-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logos-grid {
+    grid-template-columns: 1fr;
   }
 
   .service-card {
-    padding: var(--space-md);
-  }
-
-  .testimonial {
-    padding: var(--space-md);
-    border-left-width: 2px;
+    padding: var(--space-lg);
   }
 }

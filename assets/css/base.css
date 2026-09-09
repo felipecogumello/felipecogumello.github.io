@@ -1,42 +1,47 @@
 /* ============================================
-   FELIPECOMUNELLO.COM - BASE CSS
-   Reset, Variables, Global Styles
+   FELIPECOMUNELLO.COM - BASE CSS REFATORADO
+   Mix Inteligente: Specia1ne (Core) + JoinJuggle (CTAs)
+   Elegância + Conversão
    ============================================ */
 
-/* GOOGLE FONTS IMPORT */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Aeonik:wght@400;500;700&display=swap');
 
 /* ============================================
-   CSS VARIABLES (Paleta Warm Minimal + Contrastes)
+   CSS VARIABLES - Warm Minimal + Contrastes
    ============================================ */
 :root {
   /* CORES PRINCIPAIS */
-  --color-bg: #FAFAF8;           /* Off-white quente (fundo) */
-  --color-bg-alt: #F5F3F0;       /* Alternativo (seções) */
-  --color-text: #2D2D2D;         /* Charcoal escuro (texto principal) */
-  --color-text-light: #5D5D5D;   /* Cinza médio (texto secundário) */
-  --color-accent: #D4C5B9;       /* Bege-técnico (bordas, dividers) */
-  --color-border: #E8E3DE;       /* Bege-claro (linhas finas) */
+  --color-bg: #FAFAF8;
+  --color-bg-alt: #F5F3F0;
+  --color-text: #2D2D2D;
+  --color-text-light: #5D5D5D;
+  --color-accent: #D4C5B9;
+  --color-border: #E8E3DE;
   
-  /* CORES CRIATIVAS (Pops) */
-  --color-creative-orange: #FF6B35;
-  --color-creative-blue: #1E3A5F;
-  --color-creative-green: #2D5A3D;
-  --color-creative-red: #D85252;
+  /* CORES TEMÁTICAS (5 logos) */
+  --color-theme-general: #dee2c7;      /* Geral: Orgânico */
+  --color-theme-tech: #dceaf5;         /* Tech/RevOps: Precisão */
+  --color-theme-music: #313131;        /* Música: Noturno */
+  --color-theme-content: #fbe8d3;      /* Conteúdo: Calor */
+  --color-theme-strategy: #e2dfd8;     /* Estratégia: Elegância */
+  
+  /* CTA VERMELHO */
+  --color-cta: #f04242;
+  --color-cta-hover: #d93333;
   
   /* CORES FUNCIONAIS */
   --color-success: #4CAF50;
   --color-error: #E74C3C;
-  --color-warning: #F39C12;
   
-  /* ESPAÇAMENTO */
+  /* ESPAÇAMENTO (Aumentado para Specia1ne style) */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-xxl: 48px;
-  --space-giant: 64px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+  --space-giant: 80px;
+  --space-massive: 120px;
   
   /* TIPOGRAFIA */
   --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -51,14 +56,13 @@
   --font-size-3xl: 32px;
   --font-size-4xl: 48px;
   --font-size-5xl: 64px;
-  --font-size-hero: 72px;
+  --font-size-hero: 80px;
   
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   
-  /* LINE HEIGHT */
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
@@ -72,11 +76,10 @@
   --shadow-sm: 0 1px 2px rgba(45, 45, 45, 0.08);
   --shadow-md: 0 4px 12px rgba(45, 45, 45, 0.12);
   --shadow-lg: 0 12px 24px rgba(45, 45, 45, 0.15);
-  --shadow-xl: 0 20px 40px rgba(45, 45, 45, 0.2);
 }
 
 /* ============================================
-   CSS RESET
+   RESET
    ============================================ */
 * {
   margin: 0;
@@ -100,7 +103,7 @@ body {
 }
 
 /* ============================================
-   TIPOGRAFIA BASE
+   TIPOGRAFIA
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
@@ -112,12 +115,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: var(--font-size-hero);
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
 }
 
 h2 {
   font-size: var(--font-size-5xl);
   font-weight: 700;
+  margin-bottom: var(--space-xl);
 }
 
 h3 {
@@ -127,16 +131,6 @@ h3 {
 
 h4 {
   font-size: var(--font-size-2xl);
-  font-weight: 600;
-}
-
-h5 {
-  font-size: var(--font-size-xl);
-  font-weight: 600;
-}
-
-h6 {
-  font-size: var(--font-size-lg);
   font-weight: 600;
 }
 
@@ -150,18 +144,14 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* ============================================
-   ELEMENTOS INLINE
-   ============================================ */
 a {
   color: var(--color-text);
   text-decoration: none;
   transition: color var(--transition-fast);
-  position: relative;
 }
 
 a:hover {
-  color: var(--color-accent);
+  color: var(--color-cta);
 }
 
 strong, b {
@@ -169,41 +159,8 @@ strong, b {
   color: var(--color-text);
 }
 
-em, i {
-  font-style: italic;
-}
-
-code {
-  font-family: var(--font-family-mono);
-  background-color: var(--color-bg-alt);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
-blockquote {
-  border-left: 3px solid var(--color-accent);
-  padding-left: var(--space-lg);
-  margin: var(--space-lg) 0;
-  color: var(--color-text-light);
-  font-style: italic;
-}
-
 /* ============================================
-   LISTAS
-   ============================================ */
-ul, ol {
-  margin-left: var(--space-lg);
-  margin-bottom: var(--space-lg);
-}
-
-li {
-  margin-bottom: var(--space-md);
-  line-height: var(--line-height-relaxed);
-}
-
-/* ============================================
-   IMAGENS
+   IMAGENS & FIGURAS
    ============================================ */
 img {
   max-width: 100%;
@@ -211,15 +168,78 @@ img {
   display: block;
 }
 
-figure {
-  margin: var(--space-xl) 0;
+/* Avatar pequena (foto na navbar) */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-accent);
+  transition: border-color var(--transition-normal);
 }
 
-figcaption {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-  margin-top: var(--space-md);
+.avatar:hover {
+  border-color: var(--color-cta);
+}
+
+/* ============================================
+   BOTÕES
+   ============================================ */
+.btn {
+  display: inline-block;
+  padding: var(--space-md) var(--space-lg);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
   text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--color-cta);
+  color: white;
+  border-color: var(--color-cta);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cta-hover);
+  border-color: var(--color-cta-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.btn-cta {
+  background-color: var(--color-cta);
+  color: white;
+  border: none;
+}
+
+.btn-cta:hover {
+  background-color: var(--color-cta-hover);
+}
+
+.btn-lg {
+  padding: var(--space-lg) var(--space-xl);
+  font-size: var(--font-size-lg);
+}
+
+.btn-full {
+  width: 100%;
+  display: block;
 }
 
 /* ============================================
@@ -238,70 +258,11 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--color-text);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
+  border-color: var(--color-cta);
 }
 
 /* ============================================
-   BOTÕES BASE
-   ============================================ */
-button, .btn {
-  font-family: inherit;
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  padding: var(--space-md) var(--space-lg);
-  border: 2px solid transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  text-decoration: none;
-  display: inline-block;
-}
-
-button:hover, .btn:hover {
-  transform: translateY(-2px);
-}
-
-button:active, .btn:active {
-  transform: translateY(0);
-}
-
-/* ============================================
-   DIVISORES & LINHAS
-   ============================================ */
-hr {
-  border: none;
-  border-top: 1px solid var(--color-border);
-  margin: var(--space-xl) 0;
-}
-
-.divider {
-  height: 1px;
-  background-color: var(--color-border);
-  margin: var(--space-xl) 0;
-}
-
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* ============================================
-   RESPONSIVIDADE BASE
+   RESPONSIVIDADE
    ============================================ */
 @media (max-width: 768px) {
   h1 {
@@ -316,8 +277,11 @@ hr {
     font-size: 28px;
   }
 
-  body {
-    font-size: 15px;
+  :root {
+    --space-lg: 24px;
+    --space-xl: 40px;
+    --space-xxl: 56px;
+    --space-giant: 64px;
   }
 }
 
@@ -334,7 +298,9 @@ hr {
     font-size: 22px;
   }
 
-  body {
-    font-size: 14px;
+  :root {
+    --space-lg: 16px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
   }
 }
