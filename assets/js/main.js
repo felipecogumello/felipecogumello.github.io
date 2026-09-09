@@ -171,43 +171,30 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 function startLogoSlider() {
   const slider = document.getElementById('logosSlider');
-  
   if (!slider) return;
 
-  let scrollPosition = 0;
-  const scrollSpeed = 2; // pixels por frame
-  const sliderWidth = slider.scrollWidth;
-  const containerWidth = slider.clientWidth;
+  // Garante scroll habilitado via script
+  slider.style.overflowX = 'hidden';
 
-  // Duplicar logos para efeito loop infinito
   const originalItems = Array.from(slider.querySelectorAll('.logo-item'));
   originalItems.forEach(item => {
     const clone = item.cloneNode(true);
     slider.appendChild(clone);
   });
 
+  let scrollPosition = 0;
+  const scrollSpeed = 1; // Ajustado para movimento suave
+
   function autoScroll() {
     scrollPosition += scrollSpeed;
-    slider.scrollLeft = scrollPosition;
-
-    // Reset ao chegar no final
-    if (scrollPosition >= sliderWidth) {
+    if (scrollPosition >= slider.scrollWidth / 2) {
       scrollPosition = 0;
     }
-
+    slider.scrollLeft = scrollPosition;
     requestAnimationFrame(autoScroll);
   }
 
-  autoScroll();
-
-  // Pausar ao hover (pausa smoothly)
-  slider.addEventListener('mouseenter', function() {
-    // Pode adicionar lógica para pausar se quiser
-  });
-
-  slider.addEventListener('mouseleave', function() {
-    // Retoma após mouse sair
-  });
+  requestAnimationFrame(autoScroll);
 }
 
 // ============================================
