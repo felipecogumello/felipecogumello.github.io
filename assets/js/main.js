@@ -1,6 +1,5 @@
 /* ============================================
-   MAIN.JS REFATORADO
-   Carrega logos, depoimentos, slider, interações
+   MAIN.JS REFATORADO E CORRIGIDO
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -26,57 +25,58 @@ document.addEventListener('DOMContentLoaded', function() {
     logos.forEach(logo => {
       const logoItem = document.createElement('div');
       logoItem.className = 'logo-item';
-      logoItem.innerHTML = `<img src="/assets/logos/trampos/${logo}" alt="Logo">`;
+      logoItem.innerHTML = `<img src="assets/logos/trampos/${logo}" alt="Logo Marca">`;
       logosSlider.appendChild(logoItem);
     });
 
-    // Slider automático (loop infinito)
     startLogoSlider();
   }
 
   // ============================================
   // 2. CARREGAR DEPOIMENTOS DO JSON
   // ============================================
-  fetch('/assets/data/testimonials.json')
-    .then(response => response.json())
-    .then(testimonials => {
-      const testimonialsContainer = document.getElementById('testimonialsContainer');
-      
-      testimonials.forEach((testimonial, index) => {
-        const card = document.createElement('div');
-        card.className = 'testimonial-card';
-        
-        // Avatar (se tiver imagem) ou placeholder
-        const avatarHTML = testimonial.image 
-          ? `<img src="${testimonial.image}" alt="${testimonial.author}" class="testimonial-avatar-large">`
-          : `<div class="testimonial-avatar-placeholder">👤</div>`;
-        
-        card.innerHTML = `
-          <div class="testimonial-header">
-            ${avatarHTML}
-            <div class="testimonial-info">
-              <div class="testimonial-author-name">${testimonial.author}</div>
-              <div class="testimonial-author-role">${testimonial.role}</div>
-              <div class="testimonial-author-company">${testimonial.company}</div>
+  const testimonialsContainer = document.getElementById('testimonialsContainer');
+  if (testimonialsContainer) {
+    fetch('assets/data/testimonials.json')
+      .then(response => response.json())
+      .then(testimonials => {
+        testimonials.forEach(testimonial => {
+          const card = document.createElement('div');
+          card.className = 'testimonial-card';
+          
+          const avatarHTML = testimonial.image 
+            ? `<img src="${testimonial.image}" alt="${testimonial.author}" class="testimonial-avatar-large">`
+            : `<div class="testimonial-avatar-placeholder">👤</div>`;
+          
+          card.innerHTML = `
+            <div class="testimonial-header">
+              ${avatarHTML}
+              <div class="testimonial-info">
+                <div class="testimonial-author-name">${testimonial.author}</div>
+                <div class="testimonial-author-role">${testimonial.role}</div>
+                <div class="testimonial-author-company">${testimonial.company}</div>
+              </div>
             </div>
-          </div>
-          <div class="testimonial-text">"${testimonial.text}"</div>
-        `;
-        
-        testimonialsContainer.appendChild(card);
-      });
-    })
-    .catch(error => console.log('Depoimentos não carregados:', error));
+            <div class="testimonial-text">"${testimonial.text}"</div>
+          `;
+          
+          testimonialsContainer.appendChild(card);
+        });
+      })
+      .catch(error => console.log('Depoimentos não carregados:', error));
+  }
 
   // ============================================
   // 3. SMOOTH SCROLL PARA LINKS INTERNOS
   // ============================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      if (href === '#') return;
       
+      const target = document.querySelector(href);
       if (target) {
+        e.preventDefault();
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
@@ -107,28 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ============================================
-  // 5. HOVER EFFECT NOS CARDS
-  // ============================================
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.borderColor = 'var(--color-cta)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.borderColor = 'var(--color-border)';
-    });
-  });
-
-  // ============================================
-  // 6. SCROLL INDICATOR NA NAVBAR
+  // 5. SCROLL INDICATOR NA NAVBAR
   // ============================================
   window.addEventListener('scroll', function() {
     let currentSection = '';
 
-    document.querySelectorAll('section').forEach(section => {
+    document.querySelectorAll('section[id]').forEach(section => {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
       if (window.scrollY >= sectionTop - 200) {
         currentSection = section.getAttribute('id');
       }
@@ -136,66 +121,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.navbar-menu a').forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href').substring(1) === currentSection) {
+      if (link.getAttribute('href') === `#${currentSection}`) {
         link.classList.add('active');
       }
     });
   });
 
   // ============================================
-  // 7. LAZY LOADING DE IMAGENS
+  // 6. MENU MOBILE TOGGLE
   // ============================================
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-          }
-          observer.unobserve(img);
-        }
+  const navbarToggle = document.getElementById('navbarToggle');
+  const navbarMenu = document.getElementById('navbarMenu');
+
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener('click', function() {
+      navbarToggle.classList.toggle('active');
+      navbarMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarToggle.classList.remove('active');
+        navbarMenu.classList.remove('active');
       });
     });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      imageObserver.observe(img);
-    });
   }
-
 });
 
 // ============================================
-// 8. MENU MOBILE TOGGLE
-// ============================================
-const navbarToggle = document.getElementById('navbarToggle');
-const navbarMenu = document.getElementById('navbarMenu');
-
-if (navbarToggle && navbarMenu) {
-  navbarToggle.addEventListener('click', function() {
-    navbarToggle.classList.toggle('active');
-    navbarMenu.classList.toggle('active');
-  });
-
-  // Fechar menu ao clicar em qualquer link
-  document.querySelectorAll('.navbar-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      navbarToggle.classList.remove('active');
-      navbarMenu.classList.remove('active');
-    });
-  });
-}
-
-// ============================================
-// SLIDER DE LOGOS (Autoplay)
+// 7. SLIDER DE LOGOS (Autoplay Continuo)
 // ============================================
 function startLogoSlider() {
   const slider = document.getElementById('logosSlider');
   if (!slider) return;
 
-  // Garante scroll habilitado via script
   slider.style.overflowX = 'hidden';
+  slider.style.whiteSpace = 'nowrap';
 
   const originalItems = Array.from(slider.querySelectorAll('.logo-item'));
   originalItems.forEach(item => {
@@ -204,7 +165,7 @@ function startLogoSlider() {
   });
 
   let scrollPosition = 0;
-  const scrollSpeed = 1; // Ajustado para movimento suave
+  const scrollSpeed = 0.8;
 
   function autoScroll() {
     scrollPosition += scrollSpeed;
@@ -217,45 +178,3 @@ function startLogoSlider() {
 
   requestAnimationFrame(autoScroll);
 }
-
-// ============================================
-// UTILITY: AddClass para links ativos
-// ============================================
-const style = document.createElement('style');
-style.textContent = `
-  .navbar-menu a.active {
-    color: var(--color-text);
-    border-bottom-color: var(--color-cta);
-  }
-
-  @media (max-width: 768px) {
-    .logos-slider {
-      overflow-x: auto;
-      scroll-behavior: smooth;
-    }
-
-    .logo-item {
-      flex: 0 0 120px;
-      height: 120px;
-    }
-  }
-`;
-document.head.appendChild(style);
-
-// ============================================
-// ANALYTICS BÁSICO (Google Analytics Integration)
-// ============================================
-function trackEvent(eventName, eventData = {}) {
-  // Se tiver Google Analytics configurado depois, usar isso
-  console.log('Event:', eventName, eventData);
-}
-
-// Rastrear cliques em CTAs
-document.querySelectorAll('[href*="wa.me"], [href*="entr.ai"]').forEach(link => {
-  link.addEventListener('click', function() {
-    trackEvent('CTA_Click', {
-      cta: this.textContent,
-      url: this.href
-    });
-  });
-});
