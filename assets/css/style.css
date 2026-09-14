@@ -478,10 +478,14 @@ section.no-padding {
 }
 
 /* Enquadramento da Imagem */
+/* ============================================
+ENQUADRAMENTO DA IMAGEM E HERO CARD
+============================================ */
 .hero-image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hero-image-card {
@@ -491,21 +495,25 @@ section.no-padding {
   aspect-ratio: 4 / 5;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--color-border);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-.hero-image-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+/* Mantém o hover para desktop, mas evita comportamentos estranhos em telas de toque */
+@media (hover: hover) {
+  .hero-image-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 .hero-profile-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* Altera de 'center' para 'center top' para evitar cortar a cabeça no enquadramento */
+  object-position: center top; 
   display: block;
 }
 
@@ -1036,8 +1044,56 @@ section.no-padding {
   color: #ffffff;
 }
 
-/* Responsividade para Telas Menores */
+/* ============================================
+   RESPONSIVIDADE E ESPAÇAMENTOS PARA TELAS MENORES(< 768px)
+   ============================================ */
 @media (max-width: 768px) {
+  /* Redução do Padding Global de Seções (Reduz rolagens longas) */
+  section {
+    padding: var(--space-xl, 32px) var(--space-md, 16px) !important;
+  }
+
+  /* Ajustes da Seção Hero */
+  .hero {
+    min-height: auto;
+    padding: var(--space-xl, 32px) var(--space-md, 16px) var(--space-lg, 24px) var(--space-md, 16px);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg, 24px);
+  }
+
+  .hero-content h1 {
+    font-size: var(--font-size-3xl, 32px);
+    line-height: 1.2;
+    margin-bottom: var(--space-md, 16px);
+  }
+
+  .hero-content .subheader {
+    font-size: var(--font-size-base, 16px);
+    margin-bottom: var(--space-lg, 24px);
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-sm, 12px);
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Proporção da Imagem do Hero no Mobile */
+  .hero-image-card {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+  }
+
+  /* Manutenção do seu Footer Original */
   .footer-grid {
     grid-template-columns: 1fr;
     gap: var(--space-lg, 32px);
