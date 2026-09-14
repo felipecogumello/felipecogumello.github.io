@@ -293,11 +293,13 @@ img {
 }
 
 .navbar-brand-logo {
-  height: 58px; /* Aumentado para dar o peso visual correto à marca */
+  height: 58px;
   width: auto;
   object-fit: contain;
-  border-radius: 0; /* Remove o border-radius circular que cortava a logo */
-  border: none;     /* Remove a borda padrão para destacar a arte limpa */
+  border-radius: 0;
+  border: none;
+  transform: scale(2.2); /* Amplia o texto interno mantendo o alinhamento */
+  transform-origin: left center;
   transition: transform var(--transition-fast);
 }
 
@@ -876,7 +878,9 @@ section.no-padding {
   height: 52px;
   width: auto;
   object-fit: contain;
-  margin-bottom: var(--space-md, 16px);
+  transform: scale(2.2);
+  transform-origin: left center;
+  margin-bottom: 24px;
   display: block;
 }
 
