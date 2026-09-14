@@ -330,52 +330,98 @@ img {
 }
 
 /* ============================================
-   RESPONSIVIDADE (MOBILE < 768px)
+   RESPONSIVIDADE NAVBAR (MOBILE < 768px)
    ============================================ */
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .navbar-brand-logo {
+    height: 38px;
+    width: auto;
+    transform: none; /* Previne transbordamento da tela */
+  }
+
   .navbar-toggle {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
+    justify-content: space-around;
+    width: 32px;
+    height: 32px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 4px;
     z-index: 101;
   }
 
   .navbar-toggle span {
     width: 100%;
     height: 2px;
-    background-color: var(--color-text, #1a1a1a);
-    transition: all 0.3s ease;
+    background-color: var(--color-text);
+    transition: all 0.3s ease-in-out;
     border-radius: 2px;
   }
 
-  .navbar-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: rgba(250, 250, 248, 0.98);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    align-items: center;
-    padding: var(--space-lg) 0;
-    gap: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    display: none; /* Escondido por padrão no mobile */
+  /* Animação do botão para o ícone de 'X' */
+  .navbar-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
-  .navbar-menu.active {
+  /* Painel suspenso do Menu */
+  .navbar-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: var(--color-bg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--space-xl) var(--space-md);
+    gap: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
     display: flex;
   }
 
+  .navbar-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navbar-menu a {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-sm) 0;
+  }
+
+  /* Oculta CTAs do topo e renderiza dentro do menu móvel */
   .navbar-ctas {
-    display: none; /* Escondido no mobile para economizar espaço no topo */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .navbar-ctas .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 

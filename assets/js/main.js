@@ -167,6 +167,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
+// 8. MENU MOBILE TOGGLE
+// ============================================
+const navbarToggle = document.getElementById('navbarToggle');
+const navbarMenu = document.getElementById('navbarMenu');
+
+if (navbarToggle && navbarMenu) {
+  navbarToggle.addEventListener('click', function() {
+    navbarToggle.classList.toggle('active');
+    navbarMenu.classList.toggle('active');
+  });
+
+  // Fechar menu ao clicar em qualquer link
+  document.querySelectorAll('.navbar-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navbarToggle.classList.remove('active');
+      navbarMenu.classList.remove('active');
+    });
+  });
+}
+
+// ============================================
 // SLIDER DE LOGOS (Autoplay)
 // ============================================
 function startLogoSlider() {
