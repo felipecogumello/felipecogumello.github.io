@@ -293,7 +293,7 @@ img {
 }
 
 .navbar-brand-logo {
-  height: 48px; /* Aumentado para dar o peso visual correto à marca */
+  height: 58px; /* Aumentado para dar o peso visual correto à marca */
   width: auto;
   object-fit: contain;
   border-radius: 0; /* Remove o border-radius circular que cortava a logo */
