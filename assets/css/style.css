@@ -292,8 +292,6 @@ img {
   object-fit: contain;
   border-radius: 0;
   border: none;
-  transform: scale(2.2);
-  transform-origin: left center;
   transition: transform var(--transition-fast);
 }
 
@@ -987,8 +985,6 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   height: 52px;
   width: auto;
   object-fit: contain;
-  transform: scale(2.2);
-  transform-origin: left center;
   margin-bottom: 24px;
   display: block;
 }
