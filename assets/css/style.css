@@ -536,10 +536,11 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   background-color: var(--color-bg-alt);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .logos-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -548,22 +549,108 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   font-weight: 600;
   margin-bottom: var(--space-xl);
   text-align: center;
-  color: var(--color-text-light, #666666); /* Cor da 1ª parte da frase */
+  color: var(--color-text-light);
 }
 
 .logos-title span {
-  color: var(--color-text, #1a1a1a); /* Cor de destaque na 2ª parte */
+  color: var(--color-text);
   font-weight: 700;
 }
 
-.logos-slider {
+/* Container externo do marquee (esconde o overflow + fade nas bordas) */
+.logos-marquee {
+  overflow: hidden;
+  width: 100%;
+  padding: var(--space-md) 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Track interno que contém as logos — animado pelo @keyframes */
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+/* Linha 1 vai da direita para a esquerda (padrão) */
+/* Linha 2 vai da esquerda para a direita (reverse) */
+.logos-marquee--reverse .logos-track {
+  animation-direction: reverse;
+}
+
+/* Pausa ao passar o mouse (desktop) */
+@media (hover: hover) {
+  .logos-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Keyframes: move -33.333% porque o conteúdo foi clonado 3x */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+/* Cada item de logo */
+.logo-item {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xl);
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto;
+  height: 52px;
+}
+
+.logo-item img {
+  max-height: 42px;
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: opacity var(--transition-normal), filter var(--transition-normal), transform var(--transition-normal);
+}
+
+@media (hover: hover) {
+  .logo-item img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Mobile: logos menores + animação mais rápida */
+@media (max-width: 768px) {
+  .logo-item {
+    height: 38px;
+  }
+  .logo-item img {
+    max-height: 30px;
+    max-width: 90px;
+  }
+  .logos-track {
+    gap: var(--space-lg);
+    animation-duration: 30s;
+  }
+  .logos-marquee {
+    padding: var(--space-sm) 0;
+  }
 }
 
 /* Filtro Monocromático das Logos */
