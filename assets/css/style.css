@@ -287,7 +287,7 @@ img {
 }
 
 .navbar-brand-logo {
-  height: 58px;
+  height: 120px;
   width: auto;
   object-fit: contain;
   border-radius: 0;
@@ -1069,7 +1069,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
 
 /* Coluna 1 - Logo e Apresentação */
 .footer-logo {
-  height: 54px;
+  height: 120px;
   width: auto;
   object-fit: contain;
   margin-bottom: 24px;
