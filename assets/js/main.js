@@ -7,30 +7,66 @@ document.addEventListener('DOMContentLoaded', function() {
   // ============================================
   // 1. CARREGAR LOGOS DE EMPRESAS
   // ============================================
+// ============================================
+// 7. SLIDER DE LOGOS — DUAS LINHAS OPOSTAS
+// ============================================
+function startLogoSlider() {
+  const track1 = document.getElementById('logosTrack1');
+  const track2 = document.getElementById('logosTrack2');
+  if (!track1 || !track2) return;
+
+  // 25 logos confirmadas no repositório (assets/logos/trampos/)
   const logos = [
     'aldeia.png',
-    'maieutics.png',
-    'frantic.png',
-    'ora.png',
-    'traktor.png',
+    'bossa.png',
+    'celta.png',
+    'exati.png',
     'fantastica-startups.png',
+    'fazenda.png',
+    'frantic.png',
+    'fretefy.png',
+    'gestran.png',
+    'gondolas.png',
     'herospark.png',
     'impulso.png',
-    'exati.png'
+    'lutoprev.png',
+    'maieutics.png',
+    'market4u.png',
+    'ora.png',
+    'pontomais.png',
+    'preambulo.png',
+    'premme.png',
+    'rmfc.png',
+    'salarustica.png',
+    'targettrust.png',
+    'traktor.png',
+    'vispe.png',
+    'weon.png'
   ];
 
-  const logosSlider = document.getElementById('logosSlider');
-  
-  if (logosSlider) {
-    logos.forEach(logo => {
-      const logoItem = document.createElement('div');
-      logoItem.className = 'logo-item';
-      logoItem.innerHTML = `<img src="assets/logos/trampos/${logo}" alt="Logo Marca">`;
-      logosSlider.appendChild(logoItem);
-    });
+  // Divide em duas linhas: 13 + 12 (total 25)
+  const half = Math.ceil(logos.length / 2);
+  const line1 = logos.slice(0, half);  // 13 primeiras
+  const line2 = logos.slice(half);      // 12 restantes
 
-    startLogoSlider();
+  // Preenche um track com 3 repetições para loop contínuo (a animação
+  // move -33.333%, então precisamos de pelo menos 3x o conteúdo)
+  function populateTrack(track, items) {
+    for (let repeat = 0; repeat < 3; repeat++) {
+      items.forEach(logo => {
+        const item = document.createElement('div');
+        item.className = 'logo-item';
+        // alt derivado do nome do arquivo (remove extensão e hífens)
+        const altText = logo.replace('.png', '').replace(/-/g, ' ');
+        item.innerHTML = `<img src="assets/logos/trampos/${logo}" alt="${altText}" loading="lazy">`;
+        track.appendChild(item);
+      });
+    }
   }
+
+  populateTrack(track1, line1);
+  populateTrack(track2, line2);
+}
 
   // ============================================
   // 2. CARREGAR DEPOIMENTOS DO JSON
