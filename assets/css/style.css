@@ -194,7 +194,6 @@ img {
   text-align: center;
   text-decoration: none;
   border: 2px solid transparent;
-  white-space: nowrap;
 }
 
 .btn-primary {
@@ -457,7 +456,7 @@ img {
   }
 
   .navbar-ctas .btn {
-    width: 100%;
+    width: nowrap;
     text-align: center;
   }
 }
@@ -1479,6 +1478,18 @@ section.no-padding {
   h1 { font-size: 48px; }
   h2 { font-size: 36px; }
   h3 { font-size: 28px; }
+}
+/* CTA final: botões empilhados e centralizados */
+  section.alt .container-tight > div[style*="display: flex"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+  }
+
+  section.alt .container-tight > div[style*="display: flex"] .btn {
+    width: 100%;
+    display: block;
+  }
 }
 
 /* ============================================
