@@ -1607,3 +1607,43 @@ input:focus, textarea:focus, select:focus {
 .visible {
   display: block !important;
 }
+
+/* ============================================
+   SERVIÇOS E CASES — SLIDER EM TABLET/MOBILE
+   ============================================ */
+@media (max-width: 1024px) {
+  section#servicos .grid-3,
+  section#cases .grid-3 {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding-inline: var(--space-md);
+    gap: var(--space-md);
+    padding: var(--space-sm) 0 var(--space-md);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  section#servicos .grid-3::-webkit-scrollbar,
+  section#cases .grid-3::-webkit-scrollbar {
+    display: none;
+  }
+
+  section#servicos .grid-3 > *,
+  section#cases .grid-3 > * {
+    flex: 0 0 45vw;
+    max-width: 45vw;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  section#servicos .grid-3 > *,
+  section#cases .grid-3 > * {
+    flex: 0 0 80vw;
+    max-width: 80vw;
+  }
+}
