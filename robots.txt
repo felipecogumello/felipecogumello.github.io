@@ -1,0 +1,17 @@
+# robots.txt — Felipe Comunello
+# felipecogumello.github.io
+
+# Permitir indexação geral
+User-agent: *
+Allow: /
+
+# Bloquear diretórios internos que não fazem sentido no índice de busca
+Disallow: /assets/data/
+Disallow: /*.json$
+
+# Bloquear os arquivos de documentação do repositório
+Disallow: /README.md
+Disallow: /RESUMO_EXECUTIVO.md
+
+# Sitemap
+Sitemap: felipecogumello.github.io/sitemap.xml
