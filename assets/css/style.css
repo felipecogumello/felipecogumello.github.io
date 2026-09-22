@@ -283,12 +283,19 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
+}
+
+.navbar-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-brand-logo {
-  height: 120px;
+  height: 72px;
   width: auto;
+  max-width: 180px;
   object-fit: contain;
   border-radius: 0;
   border: none;
@@ -303,13 +310,13 @@ img {
   justify-content: center;
 }
 
-.navbar-menu a {
-  font-size: var(--font-size-base);
-  color: var(--color-text-light);
-  transition: color var(--transition-fast);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 4px;
+.navbar-menu {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
 }
 
 .navbar-menu a:hover {
@@ -319,12 +326,34 @@ img {
 
 .navbar-ctas {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-ctas .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-toggle {
   display: none;
+}
+
+/* Tablet: ajustes intermediários do navbar */
+@media (max-width: 1024px) {
+  .navbar-brand-logo {
+    height: 60px;
+    max-width: 160px;
+  }
+  
+  .navbar-menu {
+    gap: var(--space-lg);
+  }
+  
+  .navbar-menu a {
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* ============================================
@@ -779,39 +808,26 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-4xl);
+  flex-shrink: 0;              /* não comprime dentro do card flex */
+  overflow: hidden;            /* emoji não vaza em telas pequenas */
 }
 
-.case-card-tag {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-md);
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  font-size: var(--font-size-xs);
-  border-radius: 4px;
-  margin-bottom: var(--space-md);
-  text-transform: uppercase;
-  font-weight: 600;
+/* Mobile: proporção controlada */
+@media (max-width: 768px) {
+  .case-card-image {
+    height: auto;
+    aspect-ratio: 16 / 9;      /* mantém proporção previsível */
+    min-height: 140px;
+    font-size: var(--font-size-3xl);
+  }
 }
 
-.case-card-title {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  margin-bottom: var(--space-md);
-}
-
-.case-card-description {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-light);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-md);
-  flex-grow: 1;
-}
-
-.case-card-metric {
-  font-size: var(--font-size-base);
-  font-weight: 700;
-  color: var(--color-cta);
-  margin-bottom: var(--space-sm);
+@media (max-width: 480px) {
+  .case-card-image {
+    aspect-ratio: 3 / 2;
+    min-height: 120px;
+    font-size: var(--font-size-2xl);
+  }
 }
 
 /* ============================================
@@ -1518,4 +1534,61 @@ input:focus, textarea:focus, select:focus {
 .navbar-menu a.active {
   color: var(--color-text);
   border-bottom-color: var(--color-cta);
+}
+
+/* ============================================
+   RESPONSIVIDADE GLOBAL — ANTI-OVERFLOW
+   ============================================ */
+
+/* Nenhuma seção deve gerar scroll horizontal.
+   clip > hidden: não cria novo contexto de scroll,
+   preservando o position: sticky da navbar. */
+section {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* Containers com padding controlado no mobile */
+@media (max-width: 768px) {
+  .container,
+  .container-wide,
+  .container-tight {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Grids: forçar min-width: 0 nos filhos
+   (causa mais comum de overflow silencioso em flex/grid) */
+.grid {
+  width: 100%;
+  min-width: 0;
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+/* Cards nunca excedem o grid */
+.service-card,
+.case-card,
+.link-block {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Elementos com texto longo não empurram o layout */
+pre, code {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* Imagens e SVGs nunca estouram o container */
+img, svg {
+  max-width: 100%;
 }
