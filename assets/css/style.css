@@ -4,7 +4,7 @@
    Mix Inteligente: Specia1ne + JoinJuggle
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Aeonik:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 /* ============================================
    CSS VARIABLES
@@ -336,9 +336,10 @@ img {
   }
 
   .navbar-brand-logo {
-    height: 38px;
+    height: 80px;
     width: auto;
-    transform: none; /* Previne transbordamento da tela */
+    max-width: 220px;    /* evita logo horizontal virar uma faixa larguíssima */
+    object-fit: contain;
   }
 
   .navbar-toggle {
@@ -529,7 +530,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
 }
 
 /* ============================================
-   LOGOS SLIDER
+   LOGOS MARQUEE — DUAS LINHAS OPOSTAS
    ============================================ */
 .logos-section {
   padding: var(--space-xl) var(--space-md);
@@ -557,7 +558,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   font-weight: 700;
 }
 
-/* Container externo do marquee (esconde o overflow + fade nas bordas) */
+/* Container externo do marquee */
 .logos-marquee {
   overflow: hidden;
   width: 100%;
@@ -578,7 +579,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   );
 }
 
-/* Track interno que contém as logos — animado pelo @keyframes */
+/* Track interno — é ele que se move */
 .logos-track {
   display: flex;
   align-items: center;
@@ -588,20 +589,18 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   will-change: transform;
 }
 
-/* Linha 1 vai da direita para a esquerda (padrão) */
-/* Linha 2 vai da esquerda para a direita (reverse) */
+/* Linha 2 vai ao contrário */
 .logos-marquee--reverse .logos-track {
   animation-direction: reverse;
 }
 
-/* Pausa ao passar o mouse (desktop) */
 @media (hover: hover) {
   .logos-track:hover {
     animation-play-state: paused;
   }
 }
 
-/* Keyframes: move -33.333% porque o conteúdo foi clonado 3x */
+/* Keyframes: -33.333% porque cada track tem 3 repetições */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-33.333%); }
@@ -624,7 +623,9 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.55;
-  transition: opacity var(--transition-normal), filter var(--transition-normal), transform var(--transition-normal);
+  transition: opacity var(--transition-normal),
+              filter var(--transition-normal),
+              transform var(--transition-normal);
 }
 
 @media (hover: hover) {
@@ -635,7 +636,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
   }
 }
 
-/* Mobile: logos menores + animação mais rápida */
+/* Mobile */
 @media (max-width: 768px) {
   .logo-item {
     height: 38px;
@@ -648,38 +649,6 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
     gap: var(--space-lg);
     animation-duration: 30s;
   }
-  .logos-marquee {
-    padding: var(--space-sm) 0;
-  }
-}
-
-/* Filtro Monocromático das Logos */
-.logo-item img,
-.logo-item svg {
-  max-height: 40px;
-  width: auto;
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: opacity var(--transition-normal), filter var(--transition-normal);
-}
-
-@media (hover: hover) {
-  .logo-item img:hover,
-  .logo-item svg:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-  }
-}
-
-.logo-item img {
-  max-width: 150px;
-  max-height: 150px;
-  object-fit: contain;
-  display: block;
-}
-
-.logo-item:hover {
-  transform: translateY(-4px);
 }
 
 /* ============================================
@@ -1206,10 +1175,48 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
     border-radius: 12px;
   }
 
-  /* Manutenção do seu Footer Original */
+  /* Footer centralizado no mobile */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-lg, 32px);
+    gap: var(--space-xl, 48px);
+    text-align: center;
+  }
+
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo {
+    height: 80px;
+    max-width: 80px;    /* logo vertical: limita também a largura para não ficar desproporcional */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-contacts {
+    align-items: center;
+  }
+
+  .footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links-list {
+    align-items: center;
+  }
+
+  /* Remove o slide lateral no mobile — fica estranho com texto centralizado */
+  .footer-links-list a:hover {
+    transform: none;
   }
 
   .footer-bottom-content {
@@ -1273,64 +1280,6 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* ============================================
-   RESPONSIVIDADE - TABLET
-   ============================================ */
-@media (max-width: 768px) {
-  .navbar-menu {
-    gap: var(--space-lg);
-    font-size: var(--font-size-sm);
-  }
-
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: 1fr;
-  }
-
-  section {
-    padding: var(--space-xxl) var(--space-md);
-  }
-
-  .hero {
-    min-height: 60vh;
-    padding: var(--space-xxl) var(--space-md);
-  }
-
-  .logo-item {
-    flex: 0 0 120px;
-    height: 120px;
-  }
-
-  footer .container {
-    grid-template-columns: 1fr;
-  }
-
-  .testimonial-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .testimonial-text {
-    border-left: none;
-    border-top: 3px solid var(--color-cta);
-    padding-left: 0;
-    padding-top: var(--space-lg);
-  }
-
-  h1 {
-    font-size: 48px;
-  }
-
-  h2 {
-    font-size: 36px;
-  }
-
-  h3 {
-    font-size: 28px;
-  }
-}
-
-/* ============================================
    RESPONSIVIDADE - MOBILE
    ============================================ */
 @media (max-width: 480px) {
@@ -1361,21 +1310,8 @@ input:focus, textarea:focus, select:focus {
     font-size: var(--font-size-4xl);
   }
 
-  .logo-item {
-    flex: 0 0 100px;
-    height: 100px;
-  }
-
-  .logos-slider {
-    gap: var(--space-md);
-  }
-
   section {
     padding: var(--space-xl) var(--space-md);
-  }
-
-  footer .container {
-    grid-template-columns: 1fr;
   }
 
   .btn {
