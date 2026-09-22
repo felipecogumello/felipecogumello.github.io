@@ -616,7 +616,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
 }
 
 .logo-item img {
-  max-height: 42px;
+  max-height: 80px;
   max-width: 130px;
   width: auto;
   height: auto;
@@ -642,7 +642,7 @@ ENQUADRAMENTO DA IMAGEM E HERO CARD
     height: 38px;
   }
   .logo-item img {
-    max-height: 30px;
+    max-height: 62px;
     max-width: 90px;
   }
   .logos-track {
