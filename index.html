@@ -262,9 +262,25 @@
   <div class="container-wide">
     <h2 style="text-align: center; margin-bottom: var(--space-xl);">O que falam de mim</h2>
     
-    <div class="testimonials-grid" id="testimonialsContainer">
-      <!-- Depoimentos carregados via JavaScript -->
+    <div class="testimonials-slider-wrapper">
+      <button 
+        class="slider-arrow slider-arrow--prev" 
+        id="testimonialsPrev" 
+        aria-label="Depoimento anterior"
+        type="button">‹</button>
+      
+      <div class="testimonials-slider" id="testimonialsContainer">
+        <!-- Depoimentos carregados via JavaScript -->
+      </div>
+      
+      <button 
+        class="slider-arrow slider-arrow--next" 
+        id="testimonialsNext" 
+        aria-label="Próximo depoimento"
+        type="button">›</button>
     </div>
+    
+    <div class="testimonials-dots" id="testimonialsDots" aria-label="Navegação de depoimentos"></div>
   </div>
 </section>
 

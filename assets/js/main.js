@@ -35,10 +35,45 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
             </div>
             <div class="testimonial-text">"${testimonial.text}"</div>
+            <button class="testimonial-expand-btn" type="button" aria-expanded="false" hidden>
+              Ler mais
+            </button>
           `;
 
           testimonialsContainer.appendChild(card);
         });
+
+        // Esconde o botão de expandir quando o texto cabe inteiro
+        requestAnimationFrame(() => {
+          document.querySelectorAll('.testimonial-text').forEach(text => {
+            const card = text.closest('.testimonial-card');
+            const btn = card.querySelector('.testimonial-expand-btn');
+            const isOverflowing = text.scrollHeight > text.clientHeight + 2;
+
+            if (isOverflowing) {
+              btn.hidden = false;
+            } else {
+              text.classList.add('no-overflow');
+              btn.hidden = true;
+            }
+          });
+        });
+
+        // Delegação de eventos para os botões "Ler mais / Ler menos"
+        testimonialsContainer.addEventListener('click', function (e) {
+          const btn = e.target.closest('.testimonial-expand-btn');
+          if (!btn) return;
+
+          const card = btn.closest('.testimonial-card');
+          const text = card.querySelector('.testimonial-text');
+          const isExpanded = text.classList.toggle('expanded');
+
+          btn.textContent = isExpanded ? 'Ler menos' : 'Ler mais';
+          btn.setAttribute('aria-expanded', isExpanded.toString());
+        });
+
+        // Inicializa navegação do slider
+        initTestimonialsSlider();
       })
       .catch(error => console.log('Depoimentos não carregados:', error));
   }
@@ -196,4 +231,80 @@ function startLogoSlider() {
 
   populateTrack(track1, line1);
   populateTrack(track2, line2);
+}
+
+// ============================================
+// SLIDER DE DEPOIMENTOS — NAVEGAÇÃO
+// ============================================
+function initTestimonialsSlider() {
+  const slider = document.getElementById('testimonialsContainer');
+  const prevBtn = document.getElementById('testimonialsPrev');
+  const nextBtn = document.getElementById('testimonialsNext');
+  const dotsContainer = document.getElementById('testimonialsDots');
+
+  if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  const cards = Array.from(slider.querySelectorAll('.testimonial-card'));
+  if (!cards.length) return;
+
+  // Cria dots dinamicamente
+  cards.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'testimonial-dot';
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Ir para depoimento ${index + 1}`);
+
+  dot.addEventListener('click', () => {
+    const sliderPaddingLeft = parseInt(getComputedStyle(slider).paddingLeft) || 0;
+    slider.scrollTo({
+    left: cards[index].offsetLeft - slider.offsetLeft - sliderPaddingLeft,
+    behavior: 'smooth'
+  });
+});
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = Array.from(dotsContainer.querySelectorAll('.testimonial-dot'));
+
+  // Atualiza o dot ativo conforme o scroll
+  let scrollTimeout;
+  slider.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const sliderCenter = slider.scrollLeft + slider.offsetWidth / 2;
+
+      let activeIndex = 0;
+      let smallestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - sliderCenter);
+
+        if (distance < smallestDistance) {
+          smallestDistance = distance;
+          activeIndex = index;
+        }
+      });
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
+    }, 60);
+  });
+
+  // Ativa o primeiro dot como padrão
+  if (dots[0]) dots[0].classList.add('active');
+
+  // Setas — calculam o deslocamento de um card por clique
+  function scrollByCard(direction) {
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseInt(getComputedStyle(slider).gap) || 32;
+    const step = (cardWidth + gap) * direction;
+
+    slider.scrollBy({ left: step, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', () => scrollByCard(-1));
+  nextBtn.addEventListener('click', () => scrollByCard(1));
 }
